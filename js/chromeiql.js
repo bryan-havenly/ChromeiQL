@@ -23,10 +23,9 @@ search.substr(1).split('&').forEach(function (entry) {
 });
 
 // if variables was provided, try to format it.
-if (parameters.variables) {
+if (parameters.variables && typeof parameters.variables === 'string') {
   try {
-    parameters.variables =
-      JSON.stringify(JSON.parse(parameters.variables), null, 2);
+    parameters.variables = JSON.parse(parameters.variables);
   } catch (e) {
     // Do nothing, we want to display the invalid JSON as a string, rather
     // than present an error.
